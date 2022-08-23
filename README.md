@@ -16,3 +16,8 @@
 /banuser : quita acceso al bot de un usuario de telegram
 /getdb : Obten la base de datos donde se almacenan la info de los usarios en el bot
 /viewdb : Obten la database en forma de texto 
+
+
+
+### Heroku
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Yosolo1/Botyama)
