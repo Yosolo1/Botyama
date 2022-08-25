@@ -214,7 +214,7 @@ def processFile(update,bot,message,file,obten_name,thread=None,jdb=None):
     else:
         bot.editMessageText(message,'⚠ Hubo un error ⚠')
 
-def ddl(update,bot,message,url,obten_name,file_name='',thread=None,jdb=None):
+def ddl(update,bot,message,url,file_name='',thread=None,jdb=None):
     downloader = Downloader()
     file = downloader.download_url(url,progressfunc=downloadFile,args=(bot,message,thread))
     if not downloader.stoping:
@@ -550,10 +550,6 @@ def onmessage(update,bot:ObigramClient):
         #         bot.editMessageText(message,'🗑Archivos Borrados🗑')
         #     else:
         #         bot.editMessageText(message,'Error y Causas \n1-Revise su Cuenta\n2-Servidor Desabilitado: '+client.path)       
-        elif msgText.startswith("https://"):
-            obten_name = msgText.split("/")[-1]
-            url = msgText
-            ddl(update,bot,message,url,obten_name,file_name='',thread=thread,jdb=jdb)
         ###################################################################
        
         elif '/delete_config' in msgText:
@@ -745,8 +741,26 @@ def onmessage(update,bot:ObigramClient):
              msg_nub += "☁️ Art.sld ☛ /artem\n"   
              bot.editMessageText(message,msg_nub)
 
+        elif 'http' in msgText:
+            url = msgText
+            ddl(update,bot,message,url,file_name='',thread=thread,jdb=jdb)
         else:
-            bot.editMessageText(message,'No entiendo lo q me pides')
+            #if update:
+            #    api_id = os.environ.get('api_id')
+            #    api_hash = os.environ.get('api_hash')
+            #    bot_token = os.environ.get('bot_token')
+            #    
+                # set in debug
+            #    api_id = 7386053
+            #    api_hash = '78d1c032f3aa546ff5176d9ff0e7f341'
+            #    bot_token = '5124841893:AAH30p6ljtIzi2oPlaZwBmCfWQ1KelC6KUg'
+
+            #    chat_id = int(update.message.chat.id)
+            #    message_id = int(update.message.message_id)
+            #    import asyncio
+            #    asyncio.run(tlmedia.download_media(api_id,api_hash,bot_token,chat_id,message_id))
+            #    return
+            bot.editMessageText(message,'⚠️𝙴𝚛𝚛𝚘𝚛, 𝚗𝚘 𝚜𝚎 𝚙𝚞𝚍𝚘 𝚊𝚗𝚊𝚕𝚒𝚣𝚊𝚛 𝚌𝚘𝚛𝚛𝚎𝚌𝚝𝚊𝚖𝚎𝚗𝚝𝚎⚠️')
     except Exception as ex:
            print(str(ex))
         
